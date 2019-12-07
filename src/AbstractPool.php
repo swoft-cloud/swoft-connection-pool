@@ -275,6 +275,7 @@ abstract class AbstractPool implements PoolInterface
             // Out of `maxIdleTime`
             if ($time - $lastTime > $this->maxIdleTime) {
                 $this->count--;
+                $connection->close();
                 continue;
             }
 
